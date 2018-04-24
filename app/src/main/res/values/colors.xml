@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="rocket_fire">#EFC75E</color>
+
+    <color name="blue_1">#eae9fe</color>
+    <color name="blue_2">#ccc8fc</color>
+    <color name="blue_3">#ada8fb</color>
+    <color name="blue_4">#8f87f9</color>
+    <color name="blue_5">#7067f8</color>
+</resources>
