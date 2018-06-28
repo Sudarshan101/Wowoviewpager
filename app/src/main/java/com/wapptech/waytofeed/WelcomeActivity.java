@@ -22,12 +22,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.wapptech.waytofeed.utlity.PrefManager;
+
 import java.util.concurrent.TimeUnit;
 
 public class WelcomeActivity extends AppCompatActivity {
     private static final String TAG = WelcomeActivity.class.getSimpleName();
     private static int SPLASH_TIME_OUT = 5000;
     private CoordinatorLayout coordinatorLayout;
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
@@ -37,6 +40,7 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -70,9 +74,9 @@ public class WelcomeActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
-                    startActivity(intent);
-                    finish();
+                        Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
+                        startActivity(intent);
+                        finish();
                 }
             }, SPLASH_TIME_OUT);
         }else{
@@ -108,7 +112,11 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onResume();
 
     }
-
+    private void launchHomeScreen() {
+//        prefManager.setFirstTimeLaunch(true);
+        startActivity(new Intent(WelcomeActivity.this, HomeActivity.class));
+        finish();
+    }
 
     @Override
     protected void onPause() {

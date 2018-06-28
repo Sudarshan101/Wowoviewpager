@@ -26,34 +26,45 @@
     <FrameLayout
         android:id="@+id/login_layout"
         android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_height="150dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/background_corner"
         android:layout_gravity="center">
 
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:hint="Username"/>
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
-            android:hint="Password"/>
-
         <Button
             android:id="@+id/button"
-            android:layout_width="200dp"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sign In"
-            android:layout_marginBottom="20dp"
-            android:layout_gravity="bottom|center_horizontal"/>
+            android:layout_margin="20dp"
+            android:background="@color/color"
+            android:text="Get Start..."
+            android:textColor="#fff"
+            />
+
+        <!--<EditText-->
+            <!--android:id="@+id/username"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginTop="40dp"-->
+            <!--android:hint="Username"/>-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/password"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_marginTop="100dp"-->
+            <!--android:hint="Password"/>-->
+
+        <!--<Button-->
+            <!--android:id="@+id/button"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Sign In"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:layout_gravity="bottom|center_horizontal"/>-->
 
     </FrameLayout>
 
@@ -63,7 +74,7 @@
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:gravity="center"
-        android:textColor="#05502f"
+        android:textColor="#3E3836"
         android:layout_gravity="center"
         android:textSize="20sp"
         android:layout_marginTop="100dp"/>

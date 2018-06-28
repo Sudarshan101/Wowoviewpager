@@ -1,5 +1,6 @@
 package com.wapptech.waytofeed;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
@@ -18,6 +19,7 @@ import com.nightonke.wowoviewpager.Animation.WoWoTextViewTextAnimation;
 import com.nightonke.wowoviewpager.Animation.WoWoTranslationAnimation;
 import com.nightonke.wowoviewpager.Enum.Ease;
 import com.nightonke.wowoviewpager.WoWoPathView;
+import com.wapptech.waytofeed.utlity.PrefManager;
 
 public class IntroActivity extends WoWoActivity {
 
@@ -26,8 +28,10 @@ public class IntroActivity extends WoWoActivity {
     private ImageView targetPlanet;
     private View loginLayout;
 
+
     @Override
-    protected int contentViewRes() {
+    protected int contentViewRes()
+    {
         return R.layout.activity_intro;
     }
 
@@ -49,6 +53,7 @@ public class IntroActivity extends WoWoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         r = (int)Math.sqrt(screenW * screenW + screenH * screenH) + 10;
         ImageView earth = (ImageView) findViewById(R.id.earth);
         targetPlanet = (ImageView) findViewById(R.id.planet_target);
@@ -84,7 +89,7 @@ public class IntroActivity extends WoWoActivity {
         addPlanetTargetAnimation();
         addLoginLayoutAnimation();
         addButtonAnimation();
-        addEditTextAnimation();
+//        addEditTextAnimation();
 
         wowo.ready();
 
@@ -137,7 +142,7 @@ public class IntroActivity extends WoWoActivity {
                 .add(WoWoTextViewTextAnimation.builder().page(0).from(texts[0]).to(texts[1]).build())
                 .add(WoWoTextViewTextAnimation.builder().page(1).from(texts[1]).to(texts[2]).build())
                 .add(WoWoTextViewTextAnimation.builder().page(2).from(texts[2]).to(texts[3]).build())
-                .add(WoWoTextViewColorAnimation.builder().page(1).from("#05502f").to(Color.WHITE).build());
+                .add(WoWoTextViewColorAnimation.builder().page(1).from("#3E3836").to(Color.WHITE).build());
     }
 
     private void addRocketAnimation() {
@@ -164,7 +169,7 @@ public class IntroActivity extends WoWoActivity {
         View circle = findViewById(R.id.circle);
         wowo.addAnimation(circle)
                 .add(WoWoScaleAnimation.builder().page(1).fromXY(1).toXY(r * 2 / circle.getWidth()).build())
-                .add(WoWoShapeColorAnimation.builder().page(1).from("#f9dc0a").to("#05502f").build());
+                .add(WoWoShapeColorAnimation.builder().page(1).from("#3E3836").to("#3E3836").build());
     }
 
     private void addMeteorAnimation() {
@@ -222,7 +227,6 @@ public class IntroActivity extends WoWoActivity {
         View layout = findViewById(R.id.login_layout);
         wowo.addAnimation(layout)
                 .add(WoWoAlphaAnimation.builder().page(1).start(1).end(1).from(0).to(1).build())
-                .add(WoWoShapeColorAnimation.builder().page(2).from("#05502f").to("#0aa05f").build())
                 .add(WoWoElevationAnimation.builder().page(2).from(0).to(40).build());
     }
 
@@ -231,12 +235,21 @@ public class IntroActivity extends WoWoActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) button.setZ(50);
         wowo.addAnimation(button)
                 .add(WoWoAlphaAnimation.builder().page(2).from(0).to(1).build());
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
-    private void addEditTextAnimation() {
-        wowo.addAnimation(findViewById(R.id.username))
-                .add(WoWoAlphaAnimation.builder().page(2).from(0).to(1).build());
-        wowo.addAnimation(findViewById(R.id.password))
-                .add(WoWoAlphaAnimation.builder().page(2).from(0).to(1).build());
-    }
+
+//    private void addEditTextAnimation() {
+//        wowo.addAnimation(findViewById(R.id.username))
+//                .add(WoWoAlphaAnimation.builder().page(2).from(0).to(1).build());
+//        wowo.addAnimation(findViewById(R.id.password))
+//                .add(WoWoAlphaAnimation.builder().page(2).from(0).to(1).build());
+//    }
 }

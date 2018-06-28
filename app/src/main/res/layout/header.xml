@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="180dp"
+    android:background="@drawable/waytofeed">
+
+    <ImageView
+        android:layout_margin="20dp"
+        android:src="@drawable/waytofeed"
+        android:layout_width="75dp"
+        android:layout_height="74dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:text="Sudarshan Vishwakarma"
+        android:layout_marginLeft="20dp"/>
+
+</LinearLayout>

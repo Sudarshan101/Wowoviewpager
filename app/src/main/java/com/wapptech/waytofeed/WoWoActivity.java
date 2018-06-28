@@ -1,5 +1,6 @@
 package com.wapptech.waytofeed;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -11,9 +12,10 @@ import android.widget.TextView;
 import com.nightonke.wowoviewpager.Enum.Ease;
 import com.nightonke.wowoviewpager.WoWoViewPager;
 import com.nightonke.wowoviewpager.WoWoViewPagerAdapter;
+import com.wapptech.waytofeed.utlity.PrefManager;
 
 public abstract class WoWoActivity extends AppCompatActivity {
-
+    private PrefManager prefManager;
     protected WoWoViewPager wowo;
 
     protected int ease = Ease.Linear;
@@ -43,9 +45,13 @@ public abstract class WoWoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        prefManager = new PrefManager(this);
+        if (!prefManager.isFirstTimeLaunch()) {
+            launchHomeScreen();
+            finish();
+        }
+//        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(contentViewRes());
 
@@ -115,6 +121,12 @@ public abstract class WoWoActivity extends AppCompatActivity {
             case 29: ease = Ease.OutBounce; break;
             case 30: ease = Ease.InOutBounce; break;
         }
+    }
+
+    private void launchHomeScreen() {
+       prefManager.setFirstTimeLaunch(true);
+        startActivity(new Intent(WoWoActivity.this, HomeActivity.class));
+        finish();
     }
 
     protected int dp2px(float dp) {
